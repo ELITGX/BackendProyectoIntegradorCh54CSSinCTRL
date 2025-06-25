@@ -42,23 +42,7 @@ INSERT INTO users_has_roles (user_id,role_id)
 	(3,2),
 	(4,2),
 	(5,2);
-    
------ products------
-INSERT INTO products (
-  products_id,
-  name,
-  description,
-  customizable,
-  price,
-  stock,
-  type )
-  VALUES
-  (1, "NAC", "N-Acetil Cisteína", "10", "6700", "100", "Vía: intravenoso"),
-  (2, "Manganeso", "Sulfato de manganeso", "10", "380", "100", "Vía: intravenoso"),
-  (3, "Vivatiamin", "Pirofosfato de Tiamina", "25", "550", "100", "Vía: intramuscular, intravenoso"),
-  (4, "Metilviv", "Azul de metileno", "10", "380", "100", "Vía: intravenoso"),
-  (5, "DMSO", "Dimetil Sulfóxico al 99%", "50", "480", "100", "Vía: intravenoso");
-  
+      
   ----- products_properties------
   INSERT INTO products_properties 
 (product_property_id, product_id, presentation, concentration, 
@@ -84,27 +68,8 @@ VALUES
   'Ayuda a reducir el dolor e inflamación', 'Oral y tópico', 
   'No exceder la dosis recomendada', 'México', 
   '2025-12-31 23:59:59', 'Lugar fresco y seco');
-  
-  
------ orders------  
-INSERT INTO orders(order_id, user_id, order_details_id, purchase_date, description, total_amount)
-VALUES
-(1,5,1,'2025-05-28','2 x NAC, 1 x Manganeso',13780.00),
-(2,4,2,'2025-05-29','1 x Vivatiamin, 5 x Metilviv',2450.00),
-(3,3,3,'2025-05-30','2 x DMSO',960.00),
-(4,2,4,'2025-06-08','3 x Vivatiamin',1650.00),
-(5,1,5,'2025-06-23','1 x Manganeso',380.00);
 
------ order_has_products------
-INSERT INTO order_has_products(order_id, product_id, order_quantity)
-VALUES
-(1,1,2),
-(1,2,1),
-(2,3,1),
-(2,4,5),
-(3,5,2),
-(4,3,3),
-(5,2,1);
+
 
 ----- order_details------
 INSERT INTO order_details (
@@ -118,3 +83,41 @@ VALUES
     ('UPS', 'Entregado', 1),
     ('FedEx', 'Cancelado', 0),
     ('DHL', 'Procesando', 0);
+
+----- orders------  
+INSERT INTO orders(order_id, user_id, order_details_id, purchase_date, description, total_amount)
+VALUES
+(1,5,1,'2025-05-28','2 x NAC, 1 x Manganeso',13780.00),
+(2,4,2,'2025-05-29','1 x Vivatiamin, 5 x Metilviv',2450.00),
+(3,3,3,'2025-05-30','2 x DMSO',960.00),
+(4,2,4,'2025-06-08','3 x Vivatiamin',1650.00),
+(5,1,5,'2025-06-23','1 x Manganeso',380.00);
+
+ ----- products------
+INSERT INTO products (
+  product_id,
+  product_property_id,
+  category_id,
+  name,
+  description,
+  customizable,
+  price,
+  stock,
+  `type` )
+  VALUES
+  (1, 1, 1,"NAC", "N-Acetil Cisteína", "10", "6700", "100", "Vía: intravenoso"),
+  (2, 2, 2,"Manganeso", "Sulfato de manganeso", "10", "380", "100", "Vía: intravenoso"),
+  (3, 3, 3,"Vivatiamin", "Pirofosfato de Tiamina", "25", "550", "100", "Vía: intramuscular, intravenoso"),
+  (4, 4, 4,"Metilviv", "Azul de metileno", "10", "380", "100", "Vía: intravenoso"),
+  (5, 5, 5,"DMSO", "Dimetil Sulfóxico al 99%", "50", "480", "100", "Vía: intravenoso");
+  
+----- order_has_products------
+INSERT INTO order_has_products(order_id, product_id, order_quantity)
+VALUES
+(1,1,2),
+(1,2,1),
+(2,3,1),
+(2,4,5),
+(3,5,2),
+(4,3,3),
+(5,2,1);

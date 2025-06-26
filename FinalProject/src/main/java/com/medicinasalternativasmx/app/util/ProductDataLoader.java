@@ -13,12 +13,12 @@ import com.medicinasalternativasmx.app.repository.ProductRepository;
 @Profile("h2")
 // @Order(1)
 public class ProductDataLoader implements CommandLineRunner{
-	@Autowired
+
 	ProductRepository productRepository; 
 	
-	//public ProductDataLoader(ProductRepository productRepository) {
-	//	this.productRepository = productRepository;
-	//}
+	public ProductDataLoader(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
 
 	@Override
 	public void run(String... args) throws Exception {

@@ -1,5 +1,9 @@
 package com.medicinasalternativasmx.app.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +23,16 @@ public class User {
 	private String phone;
 	@Column(length=120, nullable=false)
 	private String password;
+	
+	@ManyToMany
+	@JoinTable( 
+			name="user_has_role", 
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id")			
+			)
+	private Set<Role> roles = new HashSet<>();
+	
+	// public User() {}
 	
 	public User(Long id, String name, String lastName, String email, String phone, String password) {
 		super();
@@ -97,7 +111,7 @@ public class User {
 		return builder.toString();
 	}
 	
-	
+
 	
 	
 }

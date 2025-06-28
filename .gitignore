@@ -23,3 +23,7 @@ Gemfile.lock
 .classpath
 .project
 .settings/
+.metadata/
+.classpath
+.project
+.settings/

@@ -6,6 +6,11 @@ build/
 !**/src/test/**/build/
 
 ### STS ###
+.metadata
+.metadata/
+.classpath
+.project
+.settings/
 .apt_generated
 .classpath
 .factorypath

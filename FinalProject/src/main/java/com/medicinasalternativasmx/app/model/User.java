@@ -11,8 +11,8 @@ public class User {
 	private Long id;
 	@Column(length=50, nullable=false)
 	private String name;
-	@Column(length=75, nullable=false)
-	private String last_name;
+	@Column(name ="last_name", length=75, nullable=false)
+	private String lastName;
 	@Column(length=50, nullable=false)
 	private String email;
 	@Column(length=15, nullable=false)
@@ -20,61 +20,61 @@ public class User {
 	@Column(length=120, nullable=false)
 	private String password;
 	
-	public User(Long id, String name, String last_name, String email, String phone, String password) {
+	public User(Long id, String name, String lastName, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.last_name = last_name;
+		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
 	}
 
-	public final Long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public final void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public final String getName() {
+	public String getName() {
 		return name;
 	}
 
-	public final void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public final String getLast_name() {
-		return last_name;
+	public String getlastName() {
+		return lastName;
 	}
 
-	public final void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setlastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public final String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public final void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public final String getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public final void setPhone(String phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public final String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public final void setPassword(String password) {
+	public  void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -85,8 +85,8 @@ public class User {
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
-		builder.append(", last_name=");
-		builder.append(last_name);
+		builder.append(", lastName=");
+		builder.append(lastName);
 		builder.append(", email=");
 		builder.append(email);
 		builder.append(", phone=");

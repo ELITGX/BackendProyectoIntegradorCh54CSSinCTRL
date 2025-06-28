@@ -2,6 +2,9 @@
 # a Gemfile as specified at https://github.com/github/pages-gem#conventional
 #SQL
 .mwb.bak
+.bak
+.metadata
+.settings
 # Basic Jekyll gitignores (synchronize to Jekyll.gitignore)
 _site/
 .sass-cache/

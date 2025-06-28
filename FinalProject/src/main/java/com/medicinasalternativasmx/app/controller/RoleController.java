@@ -35,8 +35,7 @@ public class RoleController {
 	}
 	
 	@DeleteMapping
-	String deleteRole(@PathVariable Long id) {
-		String name = roleService.deleteById( id );
-		return "se borro el rol con id :" +name; 
+	void deleteRole(@PathVariable Long id) {
+		roleService.deleteById( id );
 	}
 }

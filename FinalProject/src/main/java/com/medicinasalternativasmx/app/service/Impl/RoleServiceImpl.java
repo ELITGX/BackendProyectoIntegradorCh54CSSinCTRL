@@ -1,4 +1,5 @@
 package com.medicinasalternativasmx.app.service.Impl;
+import java.util.Optional;
 import java.util.Set;
 import org.springframework.stereotype.Service;
 import com.medicinasalternativasmx.app.model.Role;
@@ -39,9 +40,14 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public String deleteById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteById(Long id) {
+		//Optional <Role> role = roleRepository.findById(id);
+		//if(role.isPresent()) {
+		roleRepository.deleteById(id);
+			//return role.get().getName();
+		//}
+		
+		//return "";
 	}
 
 	@Override

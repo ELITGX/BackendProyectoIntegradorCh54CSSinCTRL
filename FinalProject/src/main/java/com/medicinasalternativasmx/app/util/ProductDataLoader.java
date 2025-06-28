@@ -23,8 +23,7 @@ public class ProductDataLoader implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		productRepository.save(new Product(
-				null, "NAC", "N-Acetil Cisteína", 6700.00, "imgUrl", 100));
+		productRepository.save(new Product(null, "NAC", "N-Acetil Cisteína", 6700.00, "imgUrl", 100));
 		
 	}
 

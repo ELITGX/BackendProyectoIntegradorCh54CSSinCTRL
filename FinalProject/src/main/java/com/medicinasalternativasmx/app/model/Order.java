@@ -14,8 +14,6 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//private Long id_user;
-	//private Long id_order_details;
 	@Column(nullable=false)
 	private LocalDate purchase_date;
 	@Column(length=250, nullable=false)

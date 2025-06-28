@@ -17,17 +17,22 @@ public class Product {
 	private Double price;
 	@Column(name= "img_url", length=250, nullable=false)
 	private String imgUrl;
+
 	@Column(nullable=false)
 	private Integer stock;
 	
 	
 	// POJO
+
 	public Product(Long id, String name, String description, Double price, String imgUrl, Integer stock) {
+
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
+
 		this.imgUrl = imgUrl;
+
 		this.stock = stock;
 	}
 

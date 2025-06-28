@@ -1,6 +1,7 @@
 # This .gitignore is appropriate for repositories deployed to GitHub Pages and using
 # a Gemfile as specified at https://github.com/github/pages-gem#conventional
 #SQL
+.mwb.bak
 .bak
 .metadata
 .settings
@@ -21,6 +22,7 @@ _site/
 Gemfile.lock
 /.metadata/
 
+
 # Ignorar archivos temporales de Eclipse
 *.log
 *.tmp
@@ -28,3 +30,5 @@ Gemfile.lock
 .settings/
 .classpath
 .project
+
+

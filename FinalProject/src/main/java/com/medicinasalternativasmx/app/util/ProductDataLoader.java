@@ -23,10 +23,7 @@ public class ProductDataLoader implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-<<<<<<< HEAD
-		productRepository.save(new Product(null, "NAC", "N-Acetil Cisteína", 6700.00, "imgUrl", 100));
-		
-=======
+
 		productRepository.save(new Product
 			(null, "NAC", "N-Acetil Cisteína", 6700.00, "imgUrl", 100));
 		productRepository.save(new Product
@@ -37,7 +34,7 @@ public class ProductDataLoader implements CommandLineRunner{
 			(null, "Metilviv", "Azul de metileno", 380.00, "imgUrl", 100));
 		productRepository.save(new Product
 			(null, "DMSO", "Dimetil Sulfóxico al 99%", 480.00, "imgUrl", 100));
->>>>>>> 484eb868539333f30a045d9385c96cf8918dbe4f
+
 	}
 
 	

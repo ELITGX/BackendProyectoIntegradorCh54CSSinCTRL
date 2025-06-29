@@ -29,9 +29,13 @@ public class Product {
 	
 	// Relación con entidad User
     @ManyToOne
-	@JoinColumn(name="category_id", nullable = false)
-       
+	@JoinColumn(name="category_id", nullable = false)  
     private Category category;
+    
+ // Relación con entidad ProductProperty
+    @ManyToOne
+	@JoinColumn(name="product_properties_id", nullable = false)  
+    private ProductProperty productProperty;
 	
 	// POJO
 

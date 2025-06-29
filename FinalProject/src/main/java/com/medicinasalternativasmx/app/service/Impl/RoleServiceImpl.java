@@ -22,7 +22,11 @@ public class RoleServiceImpl implements RoleService{
 
 	@Override
 	public Role findById(Long id) {
-		// TODO Auto-generated method stub
+		Optional <Role> role = roleRepository.findById(id);
+		if(role.isPresent()) {
+			roleRepository.deleteById(id);
+			return role.get();
+		}
 		return null;
 	}
 

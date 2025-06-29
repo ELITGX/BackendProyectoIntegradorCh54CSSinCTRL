@@ -37,8 +37,16 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public Role update(Long id, Role role) {
-		// TODO Auto-generated method stub
+	public Role update(Long id, Role roleUpdate) {
+		Optional <Role> roleOpt = roleRepository.findById(id);
+		
+		if(roleOpt.isPresent()) {
+			Role role = roleOpt.get();
+			role.setName(roleUpdate.getName());
+			role.setDescription(roleUpdate.getDescription());
+			return roleRepository.save(role);
+		}
+		
 		return null;
 	}
 

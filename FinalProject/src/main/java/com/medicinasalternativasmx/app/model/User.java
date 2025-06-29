@@ -42,7 +42,7 @@ public class User {
 	
 	
 	
-	// public User() {}
+	public User() {} // Es importante no quitarlo 👀 David
 	
 	public User(Long id, String name, String lastName, String email, String phone, String password) {
 		super();

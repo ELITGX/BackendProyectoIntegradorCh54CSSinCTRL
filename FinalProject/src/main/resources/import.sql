@@ -9,3 +9,5 @@ INSERT INTO `users` (`name`,`last_name`,`email`,`phone`,`password`) VALUES ('Fer
 INSERT INTO `users` (`name`,`last_name`,`email`,`phone`,`password`) VALUES ('Hernando', 'Fernandez', 'HeFz@gmail.com', '+523333333333', 'FHHF#1kqM');
 INSERT INTO `users` (`name`,`last_name`,`email`,`phone`,`password`) VALUES ('Eliar', 'Lopéz', 'ElLo@gmail.com', '+524444444444', 'LoEl#@14no');
 INSERT INTO `users` (`name`,`last_name`,`email`,`phone`,`password`) VALUES ('José', 'Chan', 'JoCh@gmail.com', '+525555555555', 'JojoCh#54');
+
+INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('1', '1'), ('2','2'), ('1','3'), ('2','4'),('2','5');

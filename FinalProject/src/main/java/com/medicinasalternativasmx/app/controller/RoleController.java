@@ -1,5 +1,7 @@
 package com.medicinasalternativasmx.app.controller;
 
+import java.util.Set;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +52,13 @@ public class RoleController {
 	Role updateRole(@RequestBody Role role, @PathVariable("id") Long id) {
 		Role updatedRole = roleService.update(id, role);
 		return updatedRole;
-		
 	}
+	
+	@GetMapping("users/{id}")
+	public Set<String> getUsersWithSpecificRoleId ( @PathVariable("id") Long id )
+    {
+        return roleService.getUsersWithSpecificRoleId(id);
+    }
+	
 	
 }

@@ -1,4 +1,7 @@
 package com.medicinasalternativasmx.app.model;
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 
@@ -14,7 +17,13 @@ public class Role {
 	@Column(length=50, nullable=false)
 	private String description;
 	
+	@ManyToMany(mappedBy = "roles")
+	private Set<User> users = new HashSet<>();
 	
+	public Set<User> getUsers() {
+		return users;
+	}
+
 	public Role(Long id, String name, String description) {
 		super();
 		this.id = id;

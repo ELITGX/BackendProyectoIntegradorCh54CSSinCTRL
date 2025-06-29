@@ -32,6 +32,12 @@ public class User {
 			)
 	private Set<Role> roles = new HashSet<>();
 	
+	// Relación con entidad Address
+	@OneToMany(mappedBy= "user")
+	private Set<Address> address = new HashSet<>();
+	
+	
+	
 	// public User() {}
 	
 	public User(Long id, String name, String lastName, String email, String phone, String password) {

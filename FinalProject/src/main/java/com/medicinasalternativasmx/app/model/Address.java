@@ -21,7 +21,14 @@ public class Address {
 
     @Column(length = 30, nullable = false)
     private String country;
+    
+ // Relación con entidad User
+    @ManyToOne
+	@JoinColumn(name="user_id", nullable = false)
+    
+    private User user;
 
+    
     // Constructors
     public Address() {}
 
@@ -33,6 +40,8 @@ public class Address {
         this.country = country;
     }
 
+    
+    
     // Getters y Setters
     
 

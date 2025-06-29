@@ -1,5 +1,8 @@
 package com.medicinasalternativasmx.app.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 @Table(name="products")
 @Entity
@@ -15,19 +18,27 @@ public class Product {
 	private String description;
 	@Column(nullable=false)
 	private Double price;
-	@Column(length=250, nullable=false)
-	private String img_url;
+	@Column(name= "img_url", length=250, nullable=false)
+	private String imgUrl;
+
 	@Column(nullable=false)
 	private Integer stock;
 	
+	@OneToMany(mappedBy= "product")
+	private Set<OrderHasProduct> orderHasProduct = new HashSet<>();
+	
 	
 	// POJO
-	public Product(Long id, String name, String description, Double price, String img_url, Integer stock) {
+
+	public Product(Long id, String name, String description, Double price, String imgUrl, Integer stock) {
+
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.img_url = img_url;
+
+		this.imgUrl = imgUrl;
+
 		this.stock = stock;
 	}
 
@@ -64,12 +75,12 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getImg_url() {
-		return img_url;
+	public String getImgUrl() {
+		return imgUrl;
 	}
 
-	public void setImg_url(String img_url) {
-		this.img_url = img_url;
+	public void setImg_url(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public Integer getStock() {
@@ -91,8 +102,8 @@ public class Product {
 		builder.append(description);
 		builder.append(", price=");
 		builder.append(price);
-		builder.append(", img_url=");
-		builder.append(img_url);
+		builder.append(", imgUrl=");
+		builder.append(imgUrl);
 		builder.append(", stock=");
 		builder.append(stock);
 		builder.append("]");

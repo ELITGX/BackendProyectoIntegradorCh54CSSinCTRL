@@ -1,5 +1,8 @@
 package com.medicinasalternativasmx.app.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 
@@ -16,6 +19,9 @@ public class OrderDetail {
 	private String order_state;
 	@Column(nullable=false)
 	private boolean is_completed;
+	// Relación con entidad Order
+	@OneToMany(mappedBy= "orderDetail")
+	private Set<Order> orders = new HashSet<>();
 	
 	
 	public OrderDetail(Long id, String delivery, String order_state, boolean is_completed) {

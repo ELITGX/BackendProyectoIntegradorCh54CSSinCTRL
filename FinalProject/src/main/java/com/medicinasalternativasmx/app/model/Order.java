@@ -27,8 +27,13 @@ public class Order {
 	// Relación con entidad User
     @ManyToOne
 	@JoinColumn(name="user_id", nullable = false)
-    
+       
     private User user;
+    
+ // Relación con entidad OrderDetails
+    @ManyToOne
+	@JoinColumn(name="order_details_id", nullable = false)
+    private OrderDetail orderDetail;
 
 	
 	public Order(Long id, LocalDate purchase_date, String description, Double total_amount) {

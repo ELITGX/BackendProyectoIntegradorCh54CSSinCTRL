@@ -35,7 +35,7 @@ public interface RoleService  {
      * Elimina un rol por su ID.
      * @param id El ID del rol a eliminar.
      */
-    void deleteById(Long id);
+    String deleteById(Long id);
   /**
      * Encuentra todos los usuarios que tienen un rol con un ID específico
      * @param id El ID del rol a buscar

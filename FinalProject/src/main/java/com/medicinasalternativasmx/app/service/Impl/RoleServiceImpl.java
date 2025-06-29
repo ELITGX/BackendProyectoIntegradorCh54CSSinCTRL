@@ -40,14 +40,14 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public void deleteById(Long id) {
-		//Optional <Role> role = roleRepository.findById(id);
-		//if(role.isPresent()) {
-		roleRepository.deleteById(id);
-			//return role.get().getName();
-		//}
+	public String deleteById(Long id) {
+		Optional <Role> role = roleRepository.findById(id);
+		if(role.isPresent()) {
+			roleRepository.deleteById(id);
+			return "Se borró el rol: " + role.get().getName();
+		}
 		
-		//return "";
+		return String.format("No se encontró el rol con el id: %d, no se borró ningún rol", id);
 	}
 
 	@Override

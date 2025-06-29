@@ -24,7 +24,6 @@ public class RoleServiceImpl implements RoleService{
 	public Role findById(Long id) {
 		Optional <Role> role = roleRepository.findById(id);
 		if(role.isPresent()) {
-			roleRepository.deleteById(id);
 			return role.get();
 		}
 		return null;

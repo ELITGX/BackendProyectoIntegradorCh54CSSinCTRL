@@ -3,12 +3,14 @@ package com.medicinasalternativasmx.app.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Table(name="order_has_products")
 @Entity
+@IdClass(OrderHasProductId.class)
 public class OrderHasProduct {
 	
 	@Column(nullable=false)

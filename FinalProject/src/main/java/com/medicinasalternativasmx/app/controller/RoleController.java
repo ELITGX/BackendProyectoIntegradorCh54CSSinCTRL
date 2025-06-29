@@ -39,4 +39,9 @@ public class RoleController {
 		
 		return roleService.deleteById( id );
 	}
+	@GetMapping("/{id}")
+    public Role getRoleById( @PathVariable("id") Long id )
+    {
+        return roleService.findById(id);
+    }
 }

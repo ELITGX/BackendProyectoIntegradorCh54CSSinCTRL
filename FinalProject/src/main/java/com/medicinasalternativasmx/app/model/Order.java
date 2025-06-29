@@ -1,6 +1,8 @@
 package com.medicinasalternativasmx.app.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 @Table(name = "orders")
 @Entity
@@ -30,10 +33,13 @@ public class Order {
        
     private User user;
     
- // Relación con entidad OrderDetails
+    // Relación con entidad OrderDetails
     @ManyToOne
 	@JoinColumn(name="order_details_id", nullable = false)
     private OrderDetail orderDetail;
+    
+    @OneToMany(mappedBy= "order")
+	private Set<OrderHasProduct> ordersHasProduct = new HashSet<>();
 
 	
 	public Order(Long id, LocalDate purchase_date, String description, Double total_amount) {

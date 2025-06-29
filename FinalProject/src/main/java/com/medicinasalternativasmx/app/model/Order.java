@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 @Table(name = "orders")
 @Entity
@@ -20,6 +22,14 @@ public class Order {
 	private String description;
 	@Column(nullable=false)
 	private Double total_amount;
+	
+	
+	// Relación con entidad User
+    @ManyToOne
+	@JoinColumn(name="user_id", nullable = false)
+    
+    private User user;
+
 	
 	public Order(Long id, LocalDate purchase_date, String description, Double total_amount) {
 		this.id = id;

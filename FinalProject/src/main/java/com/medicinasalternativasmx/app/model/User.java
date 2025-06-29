@@ -36,6 +36,10 @@ public class User {
 	@OneToMany(mappedBy= "user")
 	private Set<Address> address = new HashSet<>();
 	
+	// Relación con entidad Order
+		@OneToMany(mappedBy= "user")
+		private Set<Order> order = new HashSet<>();
+	
 	
 	
 	// public User() {}

@@ -27,6 +27,11 @@ public class Product {
 	@OneToMany(mappedBy= "product")
 	private Set<OrderHasProduct> orderHasProduct = new HashSet<>();
 	
+	// Relación con entidad User
+    @ManyToOne
+	@JoinColumn(name="category_id", nullable = false)
+       
+    private Category category;
 	
 	// POJO
 

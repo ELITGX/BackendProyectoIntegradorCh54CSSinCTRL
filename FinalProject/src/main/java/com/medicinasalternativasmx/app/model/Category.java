@@ -1,5 +1,8 @@
 package com.medicinasalternativasmx.app.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 @Table(name="categories")
 @Entity
@@ -14,7 +17,10 @@ public class Category {
 	@Column(length=50, nullable=false)
 	private String description;
 	
-
+	// Relación con entidad product
+		@OneToMany(mappedBy= "category")
+		private Set<Product> product = new HashSet<>();
+			
 	// POJO
 	public Category(Long id, String name, String description) {
 		this.id = id;

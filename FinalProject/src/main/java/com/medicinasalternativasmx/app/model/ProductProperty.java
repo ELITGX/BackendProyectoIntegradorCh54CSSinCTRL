@@ -5,12 +5,15 @@ package com.medicinasalternativasmx.app.model;
 
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -45,6 +48,10 @@ public class ProductProperty {
 	
 	@Column(name="storage", nullable=true)
 	private String storage;
+	
+	// Relación con entidad Product
+	@OneToMany(mappedBy= "productProperty")
+	private Set<Product> product = new HashSet<>();
 
 	public ProductProperty(Long id, String presentation, String concentration, String description,
 			String administration, String precautions, String origin, Timestamp expirationDate, String storage) {

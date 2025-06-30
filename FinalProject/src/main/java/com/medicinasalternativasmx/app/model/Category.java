@@ -1,16 +1,14 @@
 package com.medicinasalternativasmx.app.model;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.*;
-
-
-@Table(name="Roles")
+@Table(name="categories")
 @Entity
-public class Role {
+public class Category {
 	
+	// Define la primary key
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -19,23 +17,17 @@ public class Role {
 	@Column(length=50, nullable=false)
 	private String description;
 	
-	@ManyToMany(mappedBy = "roles")
-	@JsonIgnoreProperties({"name","lastName", "email", "phone", "password", "order" , "roles" , "address"})
-	private Set<User> users = new HashSet<>();
-	
-	// Get necesario para solicitar los datos de la tabla many to many de user_has_role
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public Role(Long id, String name, String description) {
-		super();
+	// Relación con entidad product
+		@OneToMany(mappedBy= "category")
+		private Set<Product> product = new HashSet<>();
+			
+	// POJO
+	public Category(Long id, String name, String description) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
 
-	public Role () {}
 
 	public Long getId() {
 		return id;
@@ -70,7 +62,7 @@ public class Role {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Role [id=");
+		builder.append("Category [id=");
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
@@ -79,8 +71,5 @@ public class Role {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
 	
 }

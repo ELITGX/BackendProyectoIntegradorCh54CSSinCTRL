@@ -1,5 +1,9 @@
 package com.medicinasalternativasmx.app.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +24,26 @@ public class User {
 	@Column(length=120, nullable=false)
 	private String password;
 	
+	@ManyToMany
+	@JoinTable( 
+			name="user_has_role", 
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id")			
+			)
+	private Set<Role> roles = new HashSet<>();
+	
+	// Relación con entidad Address
+	@OneToMany(mappedBy= "user")
+	private Set<Address> address = new HashSet<>();
+	
+	// Relación con entidad Order
+		@OneToMany(mappedBy= "user")
+		private Set<Order> order = new HashSet<>();
+	
+	
+	
+	public User() {} // Es importante no quitarlo 👀 David
+	
 	public User(Long id, String name, String lastName, String email, String phone, String password) {
 		super();
 		this.id = id;
@@ -29,6 +53,13 @@ public class User {
 		this.phone = phone;
 		this.password = password;
 	}
+
+	
+	// Get necesario para solicitar los datos de la tabla many to many de user_has_role
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -97,7 +128,7 @@ public class User {
 		return builder.toString();
 	}
 	
-	
+
 	
 	
 }

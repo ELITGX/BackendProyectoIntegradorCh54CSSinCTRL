@@ -1,5 +1,8 @@
 package com.medicinasalternativasmx.app.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 @Table(name="products")
 @Entity
@@ -21,6 +24,18 @@ public class Product {
 	@Column(nullable=false)
 	private Integer stock;
 	
+	@OneToMany(mappedBy= "product")
+	private Set<OrderHasProduct> orderHasProduct = new HashSet<>();
+	
+	// Relación con entidad User
+    @ManyToOne
+	@JoinColumn(name="category_id", nullable = false)  
+    private Category category;
+    
+ // Relación con entidad ProductProperty
+    @ManyToOne
+	@JoinColumn(name="product_properties_id", nullable = false)  
+    private ProductProperty productProperty;
 	
 	// POJO
 

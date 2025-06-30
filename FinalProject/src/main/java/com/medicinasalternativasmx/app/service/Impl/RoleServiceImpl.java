@@ -11,7 +11,7 @@ import com.medicinasalternativasmx.app.service.RoleService;
 
 @Service
 public class RoleServiceImpl implements RoleService{
-	RoleRepository roleRepository;
+	private final RoleRepository roleRepository;
 	
 	public RoleServiceImpl(RoleRepository roleRepository) {
 		this.roleRepository = roleRepository;
@@ -26,11 +26,18 @@ public class RoleServiceImpl implements RoleService{
 	// Método para devolver los datos de un role especifico
 	@Override
 	public Role findById(Long id) {
-		Optional <Role> role = roleRepository.findById(id);
-		if(role.isPresent()) {
-			return role.get();
+	/*
+	 * La clase Optional es un contenedor introducido en Java 8 que puede contener
+	 * un valor no nulo o estar vacío. Se utiliza para evitar errores relacionados
+	 * con valores nulos, como NullPointerException, y para expresar claramente
+	 * que un valor puede estar presente o no.
+	 */
+		Optional<Role> roleOpt = roleRepository.findById(id);
+		if( roleOpt.isEmpty() ) { // no hay objeto, la variable contiene null
+			throw new IllegalStateException("Role does not exist with id " + id);
 		}
-		return null;
+		Role existingRole = roleOpt.get();
+		return existingRole;
 	}
 
 	// Método de guardado de un nuevo role
@@ -43,31 +50,27 @@ public class RoleServiceImpl implements RoleService{
 	
 	// Método de actualización de rolen a partir del id 
 	@Override
-	public Role update(Long id, Role roleUpdate) {
-		Optional <Role> roleOpt = roleRepository.findById(id);
-		
-		if(roleOpt.isPresent()) {
-			Role role = roleOpt.get();
-			role.setName(roleUpdate.getName());
-			role.setDescription(roleUpdate.getDescription());
-			return roleRepository.save(role);
-		}
-		
-		return null;
+	public Role update(Long id, Role role) {
+		Role existingRole = findById(id);
+		// Solo se modifica los atributos permitidos
+		existingRole.setName( role.getName() );
+		existingRole.setDescription( role.getDescription() );
+		// existingRole.setId( role.getId() ); NO se permite modificar
+		Role updatedRole = roleRepository.save( existingRole );
+		return updatedRole;
 	}
+	
 	// Método de borrado de un role especifico por id
 	@Override
-	public String deleteById(Long id) {
-		Optional <Role> role = roleRepository.findById(id);
-		if(role.isPresent()) {
-			roleRepository.deleteById(id);
-			return "Se borró el rol: " + role.get().getName();
-		}
-		
-		return String.format("No se encontró el rol con el id: %d, no se borró ningún rol", id);
+	public void deleteById(Long id) {
+		Role existingRole = findById(id);
+		// existingRole.active(false); // Borrado lógico
+		// roleRepository.save( existingRole );
+		roleRepository.delete(existingRole);		
 	}
 
 	// Método de obtención de usuarios con un id de rol especifico
+	// No implementado aún con Serch
 	@Override
 	public Set<String> getUsersWithSpecificRoleId(Long id) {
 		Optional <Role> roleOpt = roleRepository.findById(id);

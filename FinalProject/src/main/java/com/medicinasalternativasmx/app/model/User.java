@@ -54,6 +54,13 @@ public class User {
 		this.password = password;
 	}
 
+	
+	// Get necesario para solicitar los datos de la tabla many to many de user_has_role
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

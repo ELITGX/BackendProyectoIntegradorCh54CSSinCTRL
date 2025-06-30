@@ -2,6 +2,8 @@ package com.medicinasalternativasmx.app.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 
@@ -18,8 +20,10 @@ public class Role {
 	private String description;
 	
 	@ManyToMany(mappedBy = "roles")
+	@JsonIgnoreProperties({"name","lastName", "email", "phone", "password", "order" , "roles" , "address"})
 	private Set<User> users = new HashSet<>();
 	
+	// Get necesario para solicitar los datos de la tabla many to many de user_has_role
 	public Set<User> getUsers() {
 		return users;
 	}

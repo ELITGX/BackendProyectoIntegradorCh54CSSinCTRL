@@ -2,6 +2,8 @@ package com.medicinasalternativasmx.app.controller;
 
 import java.util.Set;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,22 +28,25 @@ public class RoleController {
 	}
 	
 	@GetMapping // ("/api/v1/roles") http://localhost:8080/api/v1/roles
-	Iterable<Role> getAllRoles(){
-		Iterable<Role> roles = roleService.findAll();
-		return roles;
+	 ResponseEntity<Iterable<Role>> getAllRoles(){
+			Iterable<Role> roles = roleService.findAll();
+			// new ResponseEntity<Iterable<Role>>(roles, HttpStatus.OK);
+			return ResponseEntity.ok(roles);		
 	}
+
 	
 	@PostMapping
-	Role createRole(@RequestBody Role role) {
+	ResponseEntity<Role> createRole(@RequestBody Role role ) {
 		Role newRole = roleService.save(role);
-	return newRole;
+		return new ResponseEntity<Role>(newRole, HttpStatus.CREATED); // 201
 	}
 	
 	@DeleteMapping("/{id}")
-	String deleteRole(@PathVariable("id") Long id) {
-		
-		return roleService.deleteById( id );
+	ResponseEntity<Void> deleteRole(@PathVariable("id") Long id) {
+		roleService.deleteById(id);
+		return ResponseEntity.noContent().build(); // 204- Sin contenido
 	}
+	
 	@GetMapping("/{id}")
     public Role getRoleById( @PathVariable("id") Long id )
     {

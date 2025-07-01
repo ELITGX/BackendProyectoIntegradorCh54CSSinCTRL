@@ -41,7 +41,7 @@ public class Order {
     @OneToMany(mappedBy= "order")
 	private Set<OrderHasProduct> ordersHasProduct = new HashSet<>();
 
-	
+	public Order() {}
 	public Order(Long id, LocalDate purchaseDate, String description, Double totalAmount) {
 		this.id = id;
 		this.purchaseDate = purchaseDate;

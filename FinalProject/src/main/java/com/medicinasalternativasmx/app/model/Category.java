@@ -22,6 +22,10 @@ public class Category {
 		private Set<Product> product = new HashSet<>();
 			
 	// POJO
+		
+	public Category () {
+		
+	}
 	public Category(Long id, String name, String description) {
 		this.id = id;
 		this.name = name;

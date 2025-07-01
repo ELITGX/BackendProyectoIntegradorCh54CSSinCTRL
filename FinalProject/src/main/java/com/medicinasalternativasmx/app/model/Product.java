@@ -27,7 +27,7 @@ public class Product {
 	@OneToMany(mappedBy= "product")
 	private Set<OrderHasProduct> orderHasProduct = new HashSet<>();
 	
-	// Relación con entidad User
+	// Relación con entidad Category
     @ManyToOne
 	@JoinColumn(name="category_id", nullable = false)  
     private Category category;
@@ -39,6 +39,9 @@ public class Product {
 	
 	// POJO
 
+    public Product () {
+    	
+    }
 	public Product(Long id, String name, String description, Double price, String imgUrl, Integer stock) {
 
 		this.id = id;
@@ -117,6 +120,12 @@ public class Product {
 		builder.append(stock);
 		builder.append("]");
 		return builder.toString();
+	}
+
+
+	public Set<Category> getCategory() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

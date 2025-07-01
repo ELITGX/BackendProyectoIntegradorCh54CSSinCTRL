@@ -41,23 +41,25 @@ public class Order {
     @OneToMany(mappedBy= "order")
 	private Set<OrderHasProduct> ordersHasProduct = new HashSet<>();
 
-	
+	public Order() {}
 	public Order(Long id, LocalDate purchaseDate, String description, Double totalAmount) {
 		this.id = id;
 		this.purchaseDate = purchaseDate;
 		this.description = description;
 		this.totalAmount = totalAmount;
 	}
+	
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public LocalDate getpurchaseDate() {
+	public LocalDate getPurchaseDate() {
 		return purchaseDate;
 	}
-	public void setpurchaseDate(LocalDate purchaseDate) {
+	public void setPurchaseDate(LocalDate purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 	public String getDescription() {
@@ -66,11 +68,31 @@ public class Order {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Double gettotalAmount() {
+	public Double getTotalAmount() {
 		return totalAmount;
 	}
-	public void settotalAmount(Double totalAmount) {
+	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
+	}
+	
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public OrderDetail getOrderDetail() {
+		return orderDetail;
+	}
+	public void setOrderDetail(OrderDetail orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+	public Set<OrderHasProduct> getOrdersHasProduct() {
+		return ordersHasProduct;
+	}
+	public void setOrdersHasProduct(Set<OrderHasProduct> ordersHasProduct) {
+		this.ordersHasProduct = ordersHasProduct;
 	}
 	@Override
 	public String toString() {

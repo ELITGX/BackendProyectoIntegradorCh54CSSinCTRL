@@ -23,7 +23,7 @@ public class OrderDetail {
 	@OneToMany(mappedBy= "orderDetail")
 	private Set<Order> orders = new HashSet<>();
 	
-	
+	public OrderDetail() {}
 	public OrderDetail(Long id, String delivery, String order_state, boolean is_completed) {
 		this.id = id;
 		this.delivery = delivery;

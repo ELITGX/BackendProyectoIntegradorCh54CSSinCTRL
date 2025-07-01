@@ -52,6 +52,10 @@ public class ProductProperty {
 	// Relación con entidad Product
 	@OneToMany(mappedBy= "productProperty")
 	private Set<Product> product = new HashSet<>();
+	
+	public ProductProperty() {
+		
+	}
 
 	public ProductProperty(Long id, String presentation, String concentration, String description,
 			String administration, String precautions, String origin, Timestamp expirationDate, String storage) {

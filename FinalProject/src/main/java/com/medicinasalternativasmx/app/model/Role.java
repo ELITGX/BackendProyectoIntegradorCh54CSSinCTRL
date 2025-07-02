@@ -29,13 +29,14 @@ public class Role {
 	}
 
 	public Role(Long id, String name, String description) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
 
-	public Role () {}
+	public Role () {
+		
+	}
 
 	public Long getId() {
 		return id;
@@ -79,8 +80,5 @@ public class Role {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
 	
 }

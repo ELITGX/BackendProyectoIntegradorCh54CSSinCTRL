@@ -23,3 +23,9 @@ INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('2','1');
 INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('2','4');
 INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('2','5');
 INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('3','1'); 
+
+INSERT INTO `order_details` (`delivery`,`order_state`, `is_completed` ) VALUES ('Estafeta','En preparación', 'false');
+INSERT INTO `order_details` (`delivery`,`order_state`, `is_completed` ) VALUES ('DHL','Enviado', 'false');
+INSERT INTO `order_details` (`delivery`,`order_state`, `is_completed` ) VALUES ('FEDex','En preparación', 'false');
+INSERT INTO `order_details` (`delivery`,`order_state`, `is_completed` ) VALUES ('DHL','Entregado', 'true');
+INSERT INTO `order_details` (`delivery`,`order_state`, `is_completed` ) VALUES ('Estafeta','Entregado', 'true');

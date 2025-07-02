@@ -39,6 +39,7 @@ public class RoleServiceImpl implements RoleService{
 		Role existingRole = roleOpt.get();
 		return existingRole;
 	}
+	
 
 	// Método de guardado de un nuevo role
 	@Override

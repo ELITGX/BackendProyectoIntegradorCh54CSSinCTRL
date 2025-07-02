@@ -1,13 +1,11 @@
 package com.medicinasalternativasmx.app.model;
 
 
-
-
-
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -50,11 +48,11 @@ public class ProductProperty {
 	private String storage;
 	
 	// Relación con entidad Product
-	@OneToMany(mappedBy= "productProperty")
+	@OneToMany(mappedBy= "productProperty", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Product> product = new HashSet<>();
 	
+
 	public ProductProperty() {
-		
 	}
 
 	public ProductProperty(Long id, String presentation, String concentration, String description,
@@ -69,6 +67,11 @@ public class ProductProperty {
 		this.origin = origin;
 		this.expirationDate = expirationDate;
 		this.storage = storage;
+	}
+	
+	// Get necesario para solicitar los datos de la tabla one to many de product
+	public Set<Product> getProducts() {
+		return product;
 	}
 
 	public Long getId() {
@@ -131,8 +134,8 @@ public class ProductProperty {
 		return expirationDate;
 	}
 
-	public void setExpiration_date(Timestamp expiration_date) {
-		this.expirationDate = expiration_date;
+	public void setExpirationDate(Timestamp expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public String getStorage() {
@@ -167,6 +170,7 @@ public class ProductProperty {
 		builder.append("]");
 		return builder.toString();
 	}
+
 	
 	
 	

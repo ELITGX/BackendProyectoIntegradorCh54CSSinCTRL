@@ -24,6 +24,12 @@ INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('2','4');
 INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('2','5');
 INSERT INTO `user_has_role` (`role_id`,`user_id`) VALUES ('3','1'); 
 
+INSERT INTO addresses (user_id, city, state, postal_code, country) VALUES (1, 'Ciudad de México', 'CDMX', '08200', 'México');
+INSERT INTO addresses (user_id, city, state, postal_code, country) VALUES (2, 'Guadalajara', 'Jalisco', '44100', 'México');
+INSERT INTO addresses (user_id, city, state, postal_code, country) VALUES (3, 'Monterrey', 'Nuevo León', '64000', 'México');
+INSERT INTO addresses (user_id, city, state, postal_code, country) VALUES (4, 'Puebla', 'Puebla', '72000', 'México');
+INSERT INTO addresses (user_id, city, state, postal_code, country) VALUES (5, 'Tijuana', 'Baja California', '22000', 'México');
+
 INSERT INTO categories (name, description) VALUES ('Medicamentos Generales', 'Medicamentos de uso común para síntomas generales');
 INSERT INTO categories (name, description) VALUES ('Vitaminas', 'Suplementos alimenticios y vitaminas');
 INSERT INTO categories (name, description) VALUES ('Antibióticos', 'Medicamentos para tratar infecciones bacterianas');

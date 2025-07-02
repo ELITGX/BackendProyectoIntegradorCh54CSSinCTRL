@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +41,7 @@ public class Order {
     private OrderDetail orderDetail;
     
     @OneToMany(mappedBy= "order")
+    @JsonIgnore
 	private Set<OrderHasProduct> ordersHasProduct = new HashSet<>();
 
 	public Order() {}
@@ -48,6 +51,8 @@ public class Order {
 		this.description = description;
 		this.totalAmount = totalAmount;
 	}
+	
+	
 	
 	
 	public Long getId() {
@@ -94,6 +99,7 @@ public class Order {
 	public void setOrdersHasProduct(Set<OrderHasProduct> ordersHasProduct) {
 		this.ordersHasProduct = ordersHasProduct;
 	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

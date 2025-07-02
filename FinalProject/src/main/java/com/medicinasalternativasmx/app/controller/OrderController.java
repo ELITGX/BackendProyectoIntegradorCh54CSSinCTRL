@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.medicinasalternativasmx.app.dto.OrderDTO;
 import com.medicinasalternativasmx.app.model.Order;
 import com.medicinasalternativasmx.app.service.OrderService;
 
@@ -37,8 +38,8 @@ public class OrderController {
 
 	
 	@PostMapping
-	ResponseEntity<Order> createOrder(@RequestBody Order order ) {
-		Order newOrder = orderService.save(order);
+	ResponseEntity<Order> createOrder(@RequestBody OrderDTO orderDTO ) {
+		Order newOrder = orderService.save(orderDTO);
 		return new ResponseEntity<Order>(newOrder, HttpStatus.CREATED); // 201
 	}
 	
@@ -55,8 +56,8 @@ public class OrderController {
     }
 	
 	@PutMapping("/{id}")
-	Order updateOrder(@RequestBody Order order, @PathVariable("id") Long id) {
-		Order updatedOrder = orderService.update(id, order);
+	Order updateOrder(@RequestBody OrderDTO orderDTO, @PathVariable("id") Long id) {
+		Order updatedOrder = orderService.update(id, orderDTO);
 		return updatedOrder;
 	}
 	

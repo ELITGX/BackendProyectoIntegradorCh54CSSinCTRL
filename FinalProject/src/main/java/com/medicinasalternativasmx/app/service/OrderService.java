@@ -1,7 +1,7 @@
 package com.medicinasalternativasmx.app.service;
 
 import java.util.Set;
-
+import com.medicinasalternativasmx.app.dto.OrderDTO;
 import com.medicinasalternativasmx.app.model.Order;
 
 public interface OrderService {
@@ -22,7 +22,7 @@ public interface OrderService {
      * @param Order El rol a guardar.
      * @return El rol guardado.
      */
-    Order save(Order order);
+    Order save(OrderDTO orderDTO);
     
     /**
      * Actualiza un rol existente.
@@ -30,7 +30,7 @@ public interface OrderService {
      * @param Order El rol a actualizar.
      * @return El rol actualizado.
      */
-    Order update(Long id, Order order);
+    Order update(Long id, OrderDTO order);
     /**
      * Elimina un rol por su ID.
      * @param id El ID del rol a eliminar.

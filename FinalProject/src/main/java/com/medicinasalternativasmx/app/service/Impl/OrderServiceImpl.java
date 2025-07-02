@@ -5,19 +5,30 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.medicinasalternativasmx.app.dto.OrderDTO;
 import com.medicinasalternativasmx.app.model.Order;
+import com.medicinasalternativasmx.app.model.OrderDetail;
 import com.medicinasalternativasmx.app.model.OrderHasProduct;
-import com.medicinasalternativasmx.app.model.Product;
+import com.medicinasalternativasmx.app.model.User;
+import com.medicinasalternativasmx.app.repository.OrderDetailRepository;
 import com.medicinasalternativasmx.app.repository.OrderRepository;
+import com.medicinasalternativasmx.app.repository.UserRepository;
 import com.medicinasalternativasmx.app.service.OrderService;
 
 @Service
 public class OrderServiceImpl implements OrderService{
 	private final OrderRepository orderRepository;
+	private final UserRepository userRepository;
+	private final OrderDetailRepository orderDetailRepository;
 	
 	
-	public OrderServiceImpl(OrderRepository orderRepository) {
+	
+
+	public OrderServiceImpl(OrderRepository orderRepository, UserRepository userRepository,
+			OrderDetailRepository orderDetailRepository) {
 		this.orderRepository = orderRepository;
+		this.userRepository = userRepository;
+		this.orderDetailRepository = orderDetailRepository;
 	}
 
 	@Override
@@ -36,18 +47,36 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public Order save(Order order) {
-	
-		return orderRepository.save(order);
+	public Order save(OrderDTO orderDTO) {
+		
+		Optional<User> user = userRepository.findById(orderDTO.getUserId());
+		Optional<OrderDetail> orderDetail = orderDetailRepository.findById(orderDTO.getOrderDetailsId());
+		
+		if(user.isPresent() || orderDetail.isPresent()) {
+			Order order = new Order();
+			order.setPurchaseDate(orderDTO.getPurchaseDate());
+			order.setDescription(orderDTO.getDescription());
+			order.setTotalAmount(orderDTO.getTotalAmount());
+			order.setUser(user.get());
+			System.out.println(user.toString());
+			order.setOrderDetail(orderDetail.get());
+			return orderRepository.save(order);
+			
+		}
+		else {
+			System.out.println("nadagggggggg##########################3" + orderDTO.getOrderDetailsId() + orderDTO.getUserId());
+		}
+		return null;
+		
 	}
 
 	@Override
-	public Order update(Long id, Order order) {
+	public Order update(Long id, OrderDTO orderDTO) {
 		Order updateOrder = findById(id);
 		updateOrder.getClass();
-		updateOrder.setDescription(order.getDescription());
-		updateOrder.setPurchaseDate(order.getPurchaseDate());
-		updateOrder.setTotalAmount(order.getTotalAmount());
+		updateOrder.setDescription(orderDTO.getDescription());
+		updateOrder.setPurchaseDate(orderDTO.getPurchaseDate());
+		updateOrder.setTotalAmount(orderDTO.getTotalAmount());
 		return orderRepository.save(updateOrder);
 	}
 

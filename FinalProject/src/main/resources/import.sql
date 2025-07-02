@@ -47,4 +47,25 @@ INSERT INTO products (product_properties_id, category_id, name, description, pri
 INSERT INTO products (product_properties_id, category_id, name, description, price, stock, img_url) VALUES (4, 4, "Metilviv", "Azul de metileno", "380", "100", "Vía: intravenoso");
 INSERT INTO products (product_properties_id, category_id, name, description, price, stock, img_url) VALUES (5, 5, "DMSO", "Dimetil Sulfóxico al 99%", "480", "100", "Vía: intravenoso");
 
+INSERT INTO order_details (delivery, order_state, is_completed) VALUES ('DHL', 'Procesando', 0);
+INSERT INTO order_details (delivery, order_state, is_completed) VALUES ('Estafeta', 'Enviado', 0);
+INSERT INTO order_details (delivery, order_state, is_completed) VALUES ('UPS', 'Entregado', 1);
+INSERT INTO order_details (delivery, order_state, is_completed) VALUES ('FedEx', 'Cancelado', 0);
+INSERT INTO order_details (delivery, order_state, is_completed) VALUES ('DHL', 'Procesando', 0);
+
+INSERT INTO orders (user_id, order_details_id, purchase_date, description, total_amount) VALUES (5, 1, '2025-05-28', '2 x NAC, 1 x Manganeso', 13780.00);
+INSERT INTO orders (user_id, order_details_id, purchase_date, description, total_amount) VALUES (4, 2, '2025-05-29', '1 x Vivatiamin, 5 x Metilviv', 2450.00);
+INSERT INTO orders (user_id, order_details_id, purchase_date, description, total_amount) VALUES (3, 3, '2025-05-30', '2 x DMSO', 960.00);
+INSERT INTO orders (user_id, order_details_id, purchase_date, description, total_amount) VALUES (2, 4, '2025-06-08', '3 x Vivatiamin', 1650.00);
+INSERT INTO orders (user_id, order_details_id, purchase_date, description, total_amount) VALUES (1, 5, '2025-06-23', '1 x Manganeso', 380.00);
+
+INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (1,1,2);
+INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (1,2,1);
+INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (2,3,1);
+INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (2,4,5);
+INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (3,5,2);
+INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (4,3,3);
+INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (5,2,1);
+
+
 

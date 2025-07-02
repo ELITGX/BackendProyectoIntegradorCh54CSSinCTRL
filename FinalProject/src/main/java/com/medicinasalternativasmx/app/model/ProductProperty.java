@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,7 +48,7 @@ public class ProductProperty {
 	private String storage;
 	
 	// Relación con entidad Product
-	@OneToMany(mappedBy= "productProperty")
+	@OneToMany(mappedBy= "productProperty", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Product> product = new HashSet<>();
 	
 

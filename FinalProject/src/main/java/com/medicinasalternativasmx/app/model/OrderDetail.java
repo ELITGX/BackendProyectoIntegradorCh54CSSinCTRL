@@ -18,11 +18,14 @@ public class OrderDetail {
 	@Column(length=80, nullable=false)
 	private String order_state;
 	@Column(nullable=false)
-	private boolean is_completed;
+	private Boolean is_completed;
 	// Relación con entidad Order
 	@OneToMany(mappedBy= "orderDetail")
 	private Set<Order> orders = new HashSet<>();
 	
+	public OrderDetail() {
+		
+	}
 	
 	public OrderDetail(Long id, String delivery, String order_state, boolean is_completed) {
 		this.id = id;
@@ -62,15 +65,14 @@ public class OrderDetail {
 	}
 
 
-	public boolean isIs_completed() {
+	public Boolean getIs_completed() {
 		return is_completed;
 	}
 
-
-	public void setIs_completed(boolean is_completed) {
+	public void setIs_completed(Boolean is_completed) {
 		this.is_completed = is_completed;
 	}
-
+	
 
 	@Override
 	public String toString() {

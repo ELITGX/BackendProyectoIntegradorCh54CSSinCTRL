@@ -29,7 +29,15 @@ public class Address {
     private User user;
 
     
-    // Constructors
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	// Constructors
     public Address() {}
 
     public Address(Long id, String city, String state, String postalCode, String country) {

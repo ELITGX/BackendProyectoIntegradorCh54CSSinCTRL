@@ -4,8 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 // import org.springframework.core.annotation.*;
 import org.springframework.stereotype.*;
-
-import com.medicinasalternativasmx.app.model.Product;
 import com.medicinasalternativasmx.app.repository.CategoryRepository;
 
 
@@ -22,9 +20,7 @@ public class CategoryDataLoader implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		categoryRepository.save(new Product(
-				null, "NAC", "N-Acetil Cisteína", 6700.00, "imgUrl", 100));
+		// TODO Auto-generated method stub
 		
 	}
 

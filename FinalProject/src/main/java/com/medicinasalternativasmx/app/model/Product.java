@@ -26,18 +26,20 @@ public class Product {
 	@Column(nullable=false)
 	private Integer stock;
 	
-	@OneToMany(mappedBy= "product")
+	@OneToMany(mappedBy= "product", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
 	private Set<OrderHasProduct> orderHasProduct = new HashSet<>();
 	
 	// Relación con entidad Category
     @ManyToOne
 	@JoinColumn(name="category_id", nullable = false)  
+    @JsonIgnore
     private Category category;
     
  // Relación con entidad ProductProperty
     @ManyToOne
 	@JoinColumn(name="product_properties_id", nullable = false)  
+    @JsonIgnore
     private ProductProperty productProperty;
 	
 	// POJO

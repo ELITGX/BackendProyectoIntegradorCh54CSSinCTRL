@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.medicinasalternativasmx.app.dto.ProductDTO;
 import com.medicinasalternativasmx.app.model.Product;
 import com.medicinasalternativasmx.app.service.ProductService;
 
@@ -37,8 +38,8 @@ public class ProductController {
 
 	
 	@PostMapping
-	ResponseEntity<Product> createProduct(@RequestBody Product product ) {
-		Product newProduct = productService.save(product);
+	ResponseEntity<Product> createProduct(@RequestBody ProductDTO productDTO ) {
+		Product newProduct = productService.save(productDTO);
 		return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED); // 201
 	}
 	
@@ -55,13 +56,13 @@ public class ProductController {
     }
 	
 	@PutMapping("/{id}")
-	Product updateProduct(@RequestBody Product product, @PathVariable("id") Long id) {
-		Product updatedProduct = productService.update(id, product);
+	Product updateProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
+		Product updatedProduct = productService.update(id, productDTO);
 		return updatedProduct;
 	}
 	
 	@GetMapping("category/{id}")
-	public Set<String> getCategoryWithSpecificProductId ( @PathVariable("id") Long id )
+	public String getCategoryWithSpecificProductId ( @PathVariable("id") Long id )
     {
         return productService.getCategoryWithSpecificProductoId(id);
     }

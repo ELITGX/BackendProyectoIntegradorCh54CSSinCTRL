@@ -1,6 +1,6 @@
 package com.medicinasalternativasmx.app.service;
 
-import com.medicinasalternativasmx.app.dto.AddressDto;
+import com.medicinasalternativasmx.app.dto.AddressDTO;
 import com.medicinasalternativasmx.app.model.Address;
 import java.util.List;
 
@@ -21,14 +21,14 @@ public interface AddressService {
      * @param address la dirección a guardar.
      * @return la dirección guardada.
      */
-    Address save(AddressDto addressDto);
+    Address save(AddressDTO addressDto);
     /**
      * Actualiza una dirección existente.
      * @param id ID de la dirección a actualizar.
      * @param address datos de la dirección actualizada.
      * @return la dirección actualizada.
      */
-    Address update(Long id, AddressDto addressDto);
+    Address update(Long id, AddressDTO addressDto);
     /**
      * Elimina una dirección por su ID.
      * @param id ID de la dirección a eliminar.

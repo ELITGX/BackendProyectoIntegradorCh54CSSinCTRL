@@ -33,7 +33,6 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public Iterable<Order> findAll() {
-		// TODO Auto-generated method stub
 		return orderRepository.findAll();
 	}
 
@@ -63,9 +62,7 @@ public class OrderServiceImpl implements OrderService{
 			return orderRepository.save(order);
 			
 		}
-		else {
-			System.out.println("nadagggggggg##########################3" + orderDTO.getOrderDetailsId() + orderDTO.getUserId());
-		}
+		
 		return null;
 		
 	}

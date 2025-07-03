@@ -3,6 +3,8 @@ package com.medicinasalternativasmx.app.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 @Table(name="products")
 @Entity
@@ -25,6 +27,7 @@ public class Product {
 	private Integer stock;
 	
 	@OneToMany(mappedBy= "product")
+	@JsonIgnore
 	private Set<OrderHasProduct> orderHasProduct = new HashSet<>();
 	
 	// Relación con entidad Category
@@ -55,8 +58,23 @@ public class Product {
 	}
 
 	
+	public ProductProperty getProductProperty() {
+		return productProperty;
+	}
+	public void setProductProperty(ProductProperty productProperty) {
+		this.productProperty = productProperty;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public Long getId() {
 		return id;
+	}
+	public Category getCategory() {
+		return category;
 	}
 
 	public void setId(Long id) {
@@ -91,9 +109,6 @@ public class Product {
 		return imgUrl;
 	}
 
-	public void setImg_url(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
 
 	public Integer getStock() {
 		return stock;
@@ -121,14 +136,6 @@ public class Product {
 		builder.append("]");
 		return builder.toString();
 	}
-
-
-	public Set<Category> getCategory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 	
 
 }

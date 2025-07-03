@@ -1,6 +1,6 @@
 package com.medicinasalternativasmx.app.service.Impl;
 
-import com.medicinasalternativasmx.app.dto.AddressDto;
+import com.medicinasalternativasmx.app.dto.AddressDTO;
 import com.medicinasalternativasmx.app.model.Address;
 import com.medicinasalternativasmx.app.model.User;
 import com.medicinasalternativasmx.app.repository.AddressRepository;
@@ -38,7 +38,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address save(AddressDto addressDto) {
+    public Address save(AddressDTO addressDto) {
     	User user = userService.findById(addressDto.getUserId());
     	Address address = new Address();
     	address.setCity(addressDto.getCity());
@@ -51,7 +51,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address update(Long id, AddressDto addressDto) {
+    public Address update(Long id, AddressDTO addressDto) {
     	// User user = userService.findById(addressDto.getUserId());
         Address existing = findById(id);
         existing.setCity(addressDto.getCity());

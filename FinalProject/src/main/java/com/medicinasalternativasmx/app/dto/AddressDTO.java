@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class AddressDto {
+public class AddressDTO {
 	
     private Long id;
 
@@ -71,7 +71,7 @@ public class AddressDto {
 		this.userId = userId;
 	}
 
-	public AddressDto(Long id, String city, String state, String postalCode, String country, long userId) {
+	public AddressDTO(Long id, String city, String state, String postalCode, String country, long userId) {
 		super();
 		this.id = id;
 		this.city = city;
@@ -81,5 +81,5 @@ public class AddressDto {
 		this.userId = userId;
 	}
     
-    public AddressDto () {}
+    public AddressDTO () {}
 }

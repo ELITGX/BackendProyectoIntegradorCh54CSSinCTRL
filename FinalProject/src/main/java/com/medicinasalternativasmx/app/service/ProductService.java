@@ -2,6 +2,7 @@ package com.medicinasalternativasmx.app.service;
 
 import java.util.Set;
 
+import com.medicinasalternativasmx.app.dto.ProductDTO;
 import com.medicinasalternativasmx.app.model.Product;
 
 public interface ProductService {
@@ -23,7 +24,7 @@ public interface ProductService {
      * @param product El producto a guardar.
      * @return El producto guardado.
      */
-     Product save(Product product);
+     Product save(ProductDTO productDTO);
     
     /**
      * Actualiza un producto existente.
@@ -31,7 +32,7 @@ public interface ProductService {
      * @param role El producto a actualizar.
      * @return El producto actualizado.
      */
-    Product update(Long id, Product product);
+    Product update(Long id, ProductDTO productDTO);
     /**
      * Elimina un producto por su ID.
      * @param id El ID del producto a eliminar.
@@ -42,5 +43,5 @@ public interface ProductService {
      * @param id El ID del producto a buscar
      * @return Colección de producto encontrados
      */
-    Set<String> getCategoryWithSpecificProductoId(Long id);
+    String getCategoryWithSpecificProductoId(Long id);
 }

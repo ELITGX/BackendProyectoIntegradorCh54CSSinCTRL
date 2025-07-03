@@ -1,5 +1,7 @@
 package com.medicinasalternativasmx.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,12 +22,14 @@ public class OrderHasProduct {
 	@Id
     @ManyToOne
 	@JoinColumn(name="order_id", nullable = false)
+	@JsonIgnore
     private Order order;
     
  // Relación con entidad Product
     @Id
     @ManyToOne
 	@JoinColumn(name="product_id", nullable = false)
+    @JsonIgnore
     private Product product;
     
 	public OrderHasProduct() {}

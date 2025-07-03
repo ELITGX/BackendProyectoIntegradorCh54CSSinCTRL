@@ -1,6 +1,6 @@
 package com.medicinasalternativasmx.app.controller;
 
-import com.medicinasalternativasmx.app.dto.AddressDto;
+import com.medicinasalternativasmx.app.dto.AddressDTO;
 import com.medicinasalternativasmx.app.model.Address;
 import com.medicinasalternativasmx.app.service.AddressService;
 import org.springframework.http.HttpStatus;
@@ -31,13 +31,13 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<Address> create(@RequestBody AddressDto addressDto) {
+    public ResponseEntity<Address> create(@RequestBody AddressDTO addressDto) {
         Address created = addressService.save(addressDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Address> update(@PathVariable("id") Long id, @RequestBody AddressDto addressDto) {
+    public ResponseEntity<Address> update(@PathVariable("id") Long id, @RequestBody AddressDTO addressDto) {
         return ResponseEntity.ok(addressService.update(id, addressDto));
     }
 

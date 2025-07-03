@@ -14,7 +14,7 @@ import com.medicinasalternativasmx.app.service.UserService;
 @Service
 public class UserServiceImpl implements UserService{
 	
-	UserRepository userRepository;
+	private final UserRepository userRepository;
 	
 	public UserServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
@@ -63,14 +63,10 @@ public class UserServiceImpl implements UserService{
 	}
 	// Método de borrado de un user especifico por id
 	@Override
-	public String deleteById(Long id) {
-		Optional <User> user = userRepository.findById(id);
-		if(user.isPresent()) {
-			userRepository.deleteById(id);
-			return "Se borró el rol: " + user.get().getName();
-		}
+	public void deleteById(Long id) {
+		User existingUser = findById(id);
 		
-		return String.format("No se encontró el rol con el id: %d, no se borró ningún rol", id);
+		userRepository.delete(existingUser);
 	}
 
 	// Método de obtención de users con un id de usuario especifico

@@ -2,7 +2,7 @@
 INSERT INTO `roles` (`name`, `description`) VALUES ('Admin', 'Acceso total al sistema y a la configuración.');
 
 -- Rol 2: Colaborador
-INSERT INTO `roles` (`name`, `description`) VALUES ('Colaborador', 'Colaborador de la aplicación add, modifica y borra productos');
+INSERT INTO `roles` (`name`, `description`) VALUES ('Colaborador', 'Colaborador en los datos de productos');
 
 -- Rol 3: Colaborador
 INSERT INTO `roles` (`name`, `description`) VALUES ('Bucanero', 'Se que voy a enloquecer si no te tengo aqui....');

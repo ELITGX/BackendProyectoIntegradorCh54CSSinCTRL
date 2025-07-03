@@ -2,6 +2,9 @@ package com.medicinasalternativasmx.app.controller;
 
 import java.util.Set;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,22 +30,23 @@ public class UserController {
 	}
 	
 	@GetMapping // ("/api/v1/users") http://localhost:8080/api/v1/users
-	Iterable<User> getAllUsers(){
+	ResponseEntity<Iterable<User>> getAllUsers(){
 		Iterable<User> users = userService.findAll();
-		return users;
+		return ResponseEntity.ok(users);
 	}
 	
 	@PostMapping
-	User createUser(@RequestBody User user) {
+	ResponseEntity<User> createUser(@RequestBody User user) {
 		User newUser = userService.save(user);
-	return newUser;
+		return new ResponseEntity<User>(newUser, HttpStatus.CREATED); // 201
 	}
 	
 	@DeleteMapping("/{id}")
-	String deleteUser(@PathVariable("id") Long id) {
+	ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
 		
-		return userService.deleteById( id );
+		return ResponseEntity.noContent().build(); // 204 - sin contenido
 	}
+	
 	@GetMapping("/{id}")
     public User getUserById( @PathVariable("id") Long id )
     {

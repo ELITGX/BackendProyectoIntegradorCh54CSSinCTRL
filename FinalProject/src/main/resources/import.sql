@@ -60,13 +60,7 @@ INSERT INTO orders (user_id, order_details_id, purchase_date, description, total
 INSERT INTO orders (user_id, order_details_id, purchase_date, description, total_amount) VALUES (2, 4, '2025-06-08', '3 x Vivatiamin', 1650.00);
 INSERT INTO orders (user_id, order_details_id, purchase_date, description, total_amount) VALUES (1, 5, '2025-06-23', '1 x Manganeso', 380.00);
 
-/*INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (1,1,2);
-INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (1,2,1);
-INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (2,3,1);
-INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (2,4,5);
-INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (3,5,2);
-INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (4,3,3);
-INSERT INTO order_has_products(order_id, product_id, order_quantity) VALUES (5,2,1);*/
+
 
 
 

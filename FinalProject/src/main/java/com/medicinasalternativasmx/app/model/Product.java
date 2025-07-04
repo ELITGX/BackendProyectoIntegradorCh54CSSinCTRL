@@ -16,10 +16,18 @@ public class Product {
 	private Long id;
 	@Column(length=50, nullable=false)
 	private String name;
-	@Column(length=50, nullable=false)
+	@Column(length=1000, nullable=false)
 	private String description;
 	@Column(nullable=false)
 	private Double price;
+	@Column(length=50, nullable=true)
+	private String presentation;
+	@Column(length=50, nullable=true)
+	private String concentration;
+	@Column(name="administration_route",length=100, nullable=true)
+	private String administrationRoute;
+	@Column(name="discount_percentage", nullable=true)
+	private Long discountPercentage;
 	@Column(name= "img_url", length=250, nullable=false)
 	private String imgUrl;
 
@@ -47,19 +55,23 @@ public class Product {
     public Product () {
     	
     }
-	public Product(Long id, String name, String description, Double price, String imgUrl, Integer stock) {
-
+	
+	
+	public Product(Long id, String name, String description, Double price, String presentation, String concentration,
+			String administrationRoute, Long discountPercentage, String imgUrl, Integer stock) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-
+		this.presentation = presentation;
+		this.concentration = concentration;
+		this.administrationRoute = administrationRoute;
+		this.discountPercentage = discountPercentage;
 		this.imgUrl = imgUrl;
-
 		this.stock = stock;
 	}
 
-	
+
 	public ProductProperty getProductProperty() {
 		return productProperty;
 	}
@@ -119,6 +131,57 @@ public class Product {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
+
+	
+	public String getPresentation() {
+		return presentation;
+	}
+
+
+	public void setPresentation(String presentation) {
+		this.presentation = presentation;
+	}
+
+
+	public String getConcentration() {
+		return concentration;
+	}
+
+
+	public void setConcentration(String concentration) {
+		this.concentration = concentration;
+	}
+
+
+	public String getAdministrationRoute() {
+		return administrationRoute;
+	}
+
+
+	public void setAdministrationRoute(String administrationRoute) {
+		this.administrationRoute = administrationRoute;
+	}
+
+
+	public Long getDiscountPercentage() {
+		return discountPercentage;
+	}
+
+
+	public void setDiscountPercentage(Long discountPercentage) {
+		this.discountPercentage = discountPercentage;
+	}
+
+
+	public Set<OrderHasProduct> getOrderHasProduct() {
+		return orderHasProduct;
+	}
+
+
+	public void setOrderHasProduct(Set<OrderHasProduct> orderHasProduct) {
+		this.orderHasProduct = orderHasProduct;
+	}
+
 
 	@Override
 	public String toString() {

@@ -1,7 +1,5 @@
 package com.medicinasalternativasmx.app.service.Impl;
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 import org.springframework.stereotype.Service;
 import com.medicinasalternativasmx.app.dto.ProductDTO;
 import com.medicinasalternativasmx.app.model.Category;
@@ -65,6 +63,10 @@ private CategoryService categoryService;
 		product.setPrice(productDTO.getPrice());
 		product.setImgUrl(productDTO.getImgUrl()); 
 		product.setStock(productDTO.getStock());
+		product.setAdministrationRoute(productDTO.getAdministrationRoute());
+		product.setPresentation(productDTO.getPresentation());
+		product.setConcentration(productDTO.getConcentration());
+		product.setDiscountPercentage(productDTO.getDiscountPercentage());
 		product.setCategory(category);
 		product.setProductProperty(productProperty);
 		Product newProduct = productRepository.save(product);

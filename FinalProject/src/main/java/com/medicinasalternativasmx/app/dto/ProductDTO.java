@@ -1,7 +1,6 @@
 package com.medicinasalternativasmx.app.dto;
 
 
-
 public class ProductDTO {
 
 	private Long categoryId;
@@ -11,6 +10,10 @@ public class ProductDTO {
 	private Double price;
 	private String imgUrl;
 	private Integer stock;
+	private String presentation;
+	private String concentration;
+	private String administrationRoute;
+	private Long discountPercentage;
 
     
 	public Long getCategoryId() {
@@ -55,11 +58,34 @@ public class ProductDTO {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
-    
-    
+	
+	public String getPresentation() {
+		return presentation;
+	}
+	public void setPresentation(String presentation) {
+		this.presentation = presentation;
+	}
+	public String getConcentration() {
+		return concentration;
+	}
+	public void setConcentration(String concentration) {
+		this.concentration = concentration;
+	}
+	public String getAdministrationRoute() {
+		return administrationRoute;
+	}
+	public void setAdministrationRoute(String administrationRoute) {
+		this.administrationRoute = administrationRoute;
+	}
+	public Long getDiscountPercentage() {
+		return discountPercentage;
+	}
+	public void setDiscountPercentage(Long discountPercentage) {
+		this.discountPercentage = discountPercentage;
+	}
 	public ProductDTO(Long categoryId, Long productPropertyId, String name, String description, Double price,
-			String imgUrl, Integer stock) {
-		super();
+		String imgUrl, Integer stock, String presentation, String concentration, String administrationRoute,
+		Long discountPercentage) {
 		this.categoryId = categoryId;
 		this.productPropertyId = productPropertyId;
 		this.name = name;
@@ -67,8 +93,11 @@ public class ProductDTO {
 		this.price = price;
 		this.imgUrl = imgUrl;
 		this.stock = stock;
+		this.presentation = presentation;
+		this.concentration = concentration;
+		this.administrationRoute = administrationRoute;
+		this.discountPercentage = discountPercentage;
 	}
-	
 	public ProductDTO() {
 		
 	}

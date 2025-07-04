@@ -17,7 +17,7 @@ public class Category {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 250, nullable = false)
     private String description;
 
     // Relación con entidad Product

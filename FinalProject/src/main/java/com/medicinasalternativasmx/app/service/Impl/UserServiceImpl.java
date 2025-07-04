@@ -9,17 +9,21 @@ import org.springframework.stereotype.Service;
 import com.medicinasalternativasmx.app.model.Role;
 import com.medicinasalternativasmx.app.model.User;
 import com.medicinasalternativasmx.app.repository.UserRepository;
+import com.medicinasalternativasmx.app.service.RoleService;
 import com.medicinasalternativasmx.app.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
 	
 	private final UserRepository userRepository;
+	private final RoleService roleService;
 	
-	public UserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(UserRepository userRepository, RoleService roleService) {
+		super();
 		this.userRepository = userRepository;
+		this.roleService = roleService;
 	}
-	
+
 	// Método para devolver toda la tabla user
 	@Override
 	public Iterable<User> findAll() {
@@ -39,8 +43,11 @@ public class UserServiceImpl implements UserService{
 	// Método de guardado de un nuevo user
 	@Override
 	public User save(User user) {
+		Role role = roleService.findById(4L);
 		user.setId(null);
+		user.setRoles(role);
 		User newUser = userRepository.save(user);
+		
 		return newUser;
 	}
 	

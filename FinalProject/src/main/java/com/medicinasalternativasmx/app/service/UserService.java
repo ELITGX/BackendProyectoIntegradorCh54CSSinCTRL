@@ -1,5 +1,6 @@
 package com.medicinasalternativasmx.app.service;
 
+import java.util.Optional;
 import java.util.Set;
 
 import com.medicinasalternativasmx.app.model.User;
@@ -43,4 +44,6 @@ public interface UserService {
      * @return Colección de usuarios encontrados
      */
     Set<String> getRolesWithSpecificUserId(Long id);
+    
+    Optional<User> findByEmail(String email);
 }
